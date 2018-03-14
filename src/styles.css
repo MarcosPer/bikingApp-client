@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+#mainloader{
+    background-image: url('assets/loading.gif');
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position:fixed;
+    height: 100%;
+  }
