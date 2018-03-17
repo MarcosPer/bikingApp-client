@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class OauthloginComponent implements OnInit {
   msgError = false;
   msgContent: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) {}
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -20,7 +20,7 @@ export class OauthloginComponent implements OnInit {
       if (! Boolean(this.parameters.error)) {
         this.msgContent = 'Redirecting to bikingApp';
         this.authService.saveToken(params.token, params.expire);
-        // redirect
+        this.router.navigateByUrl('/');
       } else {
         this.msgError = true;
         this.msgContent = 'Error in your login: ' + '[' + this.parameters.error_code + '] ' + this.parameters.error_msg;

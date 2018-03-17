@@ -1,3 +1,28 @@
-<p>
-  login works!
-</p>
+<div class="form-container text-center">
+  <form class="form-signin">
+    <img class="mb-4" src="/assets/brand/icon.png" alt="" width="100" height="100">
+
+    <h2 class="text-divider">
+      <span>Social login</span>
+    </h2>
+
+    <a href="{{googleUrl}}" class="btn btn-lg btn-block btn-google">
+      <span class="fab fa-google"></span> Sign in with Google
+    </a>
+    <a href="{{facebookUrl}}" class="btn btn-lg btn-block btn btn-facebook">
+      <span class="fab fa-facebook"></span> Sign in with Facebook
+    </a>
+    
+    <h2 class="text-divider">
+      <span>Email login</span>
+    </h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted"> My Bike App</p>
+  </form>
+</div>
+
+

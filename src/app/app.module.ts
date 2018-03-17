@@ -12,7 +12,10 @@ import { OauthloginComponent } from './components/oauthlogin/oauthlogin.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 
 import { AuthService } from './services/auth.service';
-import { GuardService } from './services/guard.service';
+import { LoggedGuard } from './guards/logged.guard';
+import { UnloggedGuard } from './guards/unlogged.guard';
+import { LandingheaderComponent } from './template/landingpage/landingheader/landingheader.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,12 @@ import { GuardService } from './services/guard.service';
     HeaderComponent,
     LoginComponent,
     OauthloginComponent,
-    ProfileComponent
+    ProfileComponent,
+    LandingheaderComponent,
+    RegisterComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  providers: [AuthService, GuardService],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  providers: [AuthService, LoggedGuard, UnloggedGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
