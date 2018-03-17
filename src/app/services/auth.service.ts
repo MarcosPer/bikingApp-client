@@ -1,22 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private router: Router) { }
-
-  guardCheck() {
-
-    const aux = localStorage.getItem('user_logged');
-
-    if (!this.isAuth()) {
-      this.router.navigate(['/login/', {redirect : true, origin : '//test.com'}]);
-      return false;
-    } else {
-      return true;
-    }
-  }
+  constructor() { }
 
   isAuth() {
     return localStorage.getItem('user_logged') !== null;
