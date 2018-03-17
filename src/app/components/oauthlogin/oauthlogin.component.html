@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <div class="alert" [ngClass]="{ 'alert-danger': msgError, 'alert-success': !msgError}" role="alert">
+        {{msgContent}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div *ngIf="login; else landingpage">
+  <app-header></app-header>
+  <div class="container">
+    <!-- Aqui iría el home de la aplicación -->
+  </div>
+</div>
+<ng-template #landingpage>
+  <app-landingpage></app-landingpage>
+</ng-template>
