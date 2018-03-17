@@ -1,0 +1,17 @@
+:host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.about{
+    background-color: #18BC9C;
+    height: 100%;
+    padding-top: 40px;
+}
+
+h1{
+    font-size: 100px;
+}
