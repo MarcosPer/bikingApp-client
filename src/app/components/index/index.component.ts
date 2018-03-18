@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,10 +9,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
   login: Boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.login = this.authService.isAuth();

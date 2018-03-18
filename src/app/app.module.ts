@@ -11,7 +11,7 @@ import { UnloggedGuard } from './guards/unlogged.guard';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from './template/landingpage/landingpage/landingpage.component';
-import { IndexComponent } from './pages/index/index.component';
+import { IndexComponent } from './components/index/index.component';
 import { HeaderComponent } from './template/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { OauthloginComponent } from './components/oauthlogin/oauthlogin.component';
@@ -19,6 +19,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LandingheaderComponent } from './template/landingpage/landingheader/landingheader.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './template/landingpage/about-us/about-us.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileBannerComponent } from './components/profile-banner/profile-banner.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,11 @@ import { AboutUsComponent } from './template/landingpage/about-us/about-us.compo
     ProfileComponent,
     LandingheaderComponent,
     RegisterComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HomeComponent,
+    ProfileBannerComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   providers: [AuthService, LoggedGuard, UnloggedGuard, CacheService],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LoggedGuard } from './guards/logged.guard';
 import { UnloggedGuard } from './guards/unlogged.guard';
 
-import { IndexComponent } from './pages/index/index.component';
+import { IndexComponent } from './components/index/index.component';
 import { OauthloginComponent } from './components/oauthlogin/oauthlogin.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
