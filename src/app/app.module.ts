@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routes } from './app.router';
 
 import { AuthService } from './services/auth.service';
@@ -20,7 +21,8 @@ import { LandingheaderComponent } from './template/landingpage/landingheader/lan
 import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './template/landingpage/about-us/about-us.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileBannerComponent } from './components/profile-banner/profile-banner.component';
+import { HomeProfileComponent } from './components/home-profile/home-profile.component';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,16 @@ import { ProfileBannerComponent } from './components/profile-banner/profile-bann
     RegisterComponent,
     AboutUsComponent,
     HomeComponent,
-    ProfileBannerComponent
+    HomeProfileComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
-  providers: [AuthService, LoggedGuard, UnloggedGuard, CacheService],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthService,
+    LoggedGuard,
+    UnloggedGuard,
+    CacheService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

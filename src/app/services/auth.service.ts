@@ -3,22 +3,29 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
+    getToken(): any {
+        return 'putaodkodskjcsxvhhyudsguvcxsjyuxgfcyudsfjidhfyhudsforeputa';
+    }
   constructor() { }
 
   isAuth() {
-    return localStorage.getItem('user_logged') !== null;
+    if (this.getLogin() === undefined) { return false; }
+    return true;
   }
 
   saveToken(token: string, expiration: number) {
-    localStorage.setItem('user_logged', 'logged');
-    localStorage.setItem('user_token' , token);
-    localStorage.setItem('user_token_exp', expiration.toString());
+    localStorage.setItem('login', JSON.stringify({token: token, expiration: expiration}));
   }
 
   logOut() {
-    localStorage.removeItem('user_logged');
-    localStorage.removeItem('user_token');
-    localStorage.removeItem('user_token_exp');
+    localStorage.clear();
   }
 
+  getLogin()  {
+    try {
+      return JSON.parse(localStorage.getItem('login'));
+    } catch (error) {
+      return null;
+    }
+  }
 }
