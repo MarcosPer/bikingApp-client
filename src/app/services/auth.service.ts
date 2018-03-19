@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
-    getToken(): any {
-        return 'putaodkodskjcsxvhhyudsguvcxsjyuxgfcyudsfjidhfyhudsforeputa';
+  isExpired() {
+    const login = this.getLogin();
+    if(login === null || Date.now > login.expiration){
+      return true;
     }
+    return false;
+  }
   constructor() { }
 
   isAuth() {
-    if (this.getLogin() === undefined) { return false; }
+    if (this.getLogin() === null) { return false; }
     return true;
   }
 

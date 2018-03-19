@@ -1,23 +1,25 @@
-// src/app/auth/token.interceptor.ts
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Get the auth header from the service.
-    // Clone the request to add the new header.
-    req = req.clone({headers: req.headers.set('Authorization', 'bearer 548')});
-    // Pass on the cloned request instead of the original request.
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    /*
+    if(this.authService.isExpired()){
+      this.router.navigateByUrl('/login');
+    }
+    */
+    const login = this.authService.getLogin();
+    
+    if (login !== null){
+      req = req.clone({headers: req.headers.set('Authorization', 'bearer '+login.token)});
+    }
+    //TODO : check expiration
     return next.handle(req);
   }
 }
