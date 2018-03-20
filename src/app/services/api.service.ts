@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiService {
 
-  apiUrl: String = 'http://localhost:3000';
+  apiUrl: String = 'http://biking-server.herokuapp.com';
 
   constructor() { }
 
