@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { HttpClient } from '@angular/common/http';
+import { CacheService } from '../../services/cache.service';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -14,7 +14,10 @@ export class HeaderComponent implements OnInit {
 
   @Input() margin: Boolean = true;
   navStyle: any;
-  constructor(private router: Router, private authService: AuthService, private http: HttpClient) { }
+  userName: String;
+  userAvatar: String;
+
+  constructor(private router: Router, private authService: AuthService, private cacheService: CacheService) { }
 
   ngOnInit() {
     if (this.margin) {
@@ -22,7 +25,10 @@ export class HeaderComponent implements OnInit {
     }
 
     // http://biking-server.herokuapp.com/user/me
-    this.http.get('http://biking-server.herokuapp.com/user/me').subscribe(data => console.log(data));
+    this.cacheService.getUserCache().then(data => {
+      this.userName = data.name;
+      this.userAvatar = data.avatar;
+    });
   }
 
   logOut() {

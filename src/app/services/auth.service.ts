@@ -5,7 +5,7 @@ export class AuthService {
 
   isExpired() {
     const login = this.getLogin();
-    if(login === null || Date.now > login.expiration){
+    if (login === null || Date.now > login.expiration){
       return true;
     }
     return false;

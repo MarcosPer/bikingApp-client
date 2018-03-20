@@ -6,6 +6,7 @@ import { routes } from './app.router';
 
 import { AuthService } from './services/auth.service';
 import { CacheService } from './services/cache.service';
+import { ApiService } from './services/api.service';
 
 import { LoggedGuard } from './guards/logged.guard';
 import { UnloggedGuard } from './guards/unlogged.guard';
@@ -45,7 +46,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     AuthService,
     LoggedGuard,
     UnloggedGuard,
-    CacheService
+    CacheService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
