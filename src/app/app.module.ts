@@ -8,6 +8,10 @@ import { AuthService } from './services/auth.service';
 import { CacheService } from './services/cache.service';
 import { ApiService } from './services/api.service';
 
+import { AuthInterceptor } from './services/auth.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
+
+
 import { LoggedGuard } from './guards/logged.guard';
 import { UnloggedGuard } from './guards/unlogged.guard';
 
@@ -23,7 +27,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './template/landingpage/about-us/about-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeProfileComponent } from './components/home-profile/home-profile.component';
-import { AuthInterceptor } from './services/auth.interceptor';
+import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +42,16 @@ import { AuthInterceptor } from './services/auth.interceptor';
     RegisterComponent,
     AboutUsComponent,
     HomeComponent,
-    HomeProfileComponent
+    HomeProfileComponent,
+    ErrorpageComponent
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
+  ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthService,
     LoggedGuard,

@@ -8,11 +8,13 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './template/landingpage/about-us/about-us.component';
+import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 
 
 export const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'home', component: IndexComponent},
+  { path: 'error', component: ErrorpageComponent},
 
   // Ulogged paths
   { path: 'login', component: LoginComponent, canActivate: [UnloggedGuard]},

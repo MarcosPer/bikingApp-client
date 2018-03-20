@@ -7,37 +7,25 @@ import 'rxjs/add/operator/do';
 
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  invalidLoginErrors = ['e4012', 'e4013', 'e4014', 'e4015'];
+export class ErrorInterceptor implements HttpInterceptor {
+  showErrors = ['e5301'];
+  interalErrors = /(e8[0-9])\w+/g;
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const login = this.authService.getLogin();
-
-    if (login !== null) {
-      req = req.clone({
-        headers: req.headers.set('Authorization', 'bearer ' + login.token)
-      });
-    }
 
     return next.handle(req).do(
       event => {
         /*if (event instanceof HttpResponse) {
-
           //console.log(event.body);
         }*/
       },
       err => {
         if (err instanceof HttpErrorResponse) {
-          if (this.invalidLoginErrors.indexOf(err.error.error) !== -1) {
-            // We have invalid token. Login again
-            this.authService.logOut();
-            this.router.navigateByUrl('/login?errorUnlogged=true');
+          if (this.showErrors.indexOf(err.error.error) !== -1 || this.interalErrors.test(err.error.error)) {
+            this.router.navigateByUrl('/error?error=' + err.error.error + '&msg=' + err.error.msg);
           }
         }
       }
