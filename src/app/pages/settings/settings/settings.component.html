@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-12 order-2 col-sm-2 order-sm-1 col-md-12 order-md-2 col-lg-3 order-lg-1">
+      <div class="card">
+
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" [ngClass]="{active: subpage == 'account'}" (click)="loadSettings('account')">Account</a>
+          <a class="nav-link" [ngClass]="{active: subpage == 'profile'}" (click)="loadSettings('profile')" >Profile</a>
+ 
+        </div>
+      </div>
+    </div>
+    <div class="col-12 order-1 col-sm-10 order-sm-2 col-md-7 order-md-1 col-lg-9 order-lg-2">
+      <div class="" [ngSwitch]="subpage">
+        <app-profile-settings *ngSwitchCase="'profile'"></app-profile-settings>
+        <app-account-settings *ngSwitchCase="'account'"></app-account-settings>
+
+        <!-- error page -->
+        <div class="alert alert-danger" role="alert" *ngSwitchDefault>
+          <h4 class="alert-heading">Oops!</h4>
+          <p>We can't found {{subpage}} settings page. Please check if it's correct</p>
+          <hr>
+          <p>You can found all avaliable settings in this page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

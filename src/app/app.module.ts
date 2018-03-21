@@ -28,6 +28,9 @@ import { AboutUsComponent } from './template/landingpage/about-us/about-us.compo
 import { HomeComponent } from './pages/home/home.component';
 import { HomeProfileComponent } from './components/home-profile/home-profile.component';
 import { ErrorpageComponent } from './components/errorpage/errorpage.component';
+import { SettingsComponent } from './pages/settings/settings/settings.component';
+import { ProfileSettingsComponent } from './pages/settings/profile-settings/profile-settings.component';
+import { AccountSettingsComponent } from './pages/settings/account-settings/account-settings.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { ErrorpageComponent } from './components/errorpage/errorpage.component';
     AboutUsComponent,
     HomeComponent,
     HomeProfileComponent,
-    ErrorpageComponent
+    ErrorpageComponent,
+    SettingsComponent,
+    ProfileSettingsComponent,
+    AccountSettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './template/landingpage/about-us/about-us.component';
 import { ErrorpageComponent } from './components/errorpage/errorpage.component';
+import { SettingsComponent } from './pages/settings/settings/settings.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,10 @@ export const routes: Routes = [
 
   // Logged paths
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [LoggedGuard] },
+  { path: 'settings/:page', component: SettingsComponent, canActivate: [LoggedGuard]},
+
+  // { path: 'settings/account', component: SettingsComponent, data: {subpage : 'account'}, canActivate: [LoggedGuard]},
 
   // 404 Error
   { path: '**', redirectTo: '' },
