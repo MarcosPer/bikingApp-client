@@ -12,7 +12,13 @@ export class SettingsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private location: Location) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(v => this.loadSettings(v['page']));
+    this.activatedRoute.params.subscribe(v => {
+      if (v['page'] === undefined ) {
+        this.loadSettings('profile');
+      } else {
+        this.loadSettings(v['page']);
+      }
+    });
   }
 
   loadSettings(page) {

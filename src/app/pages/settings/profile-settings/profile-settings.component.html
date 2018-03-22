@@ -1,3 +1,34 @@
-<p>
-  profile-settings works!
-</p>
+<div class="row">
+
+  <!-- Left side -->
+  <div class="col-12 order-1 col-sm-12 order-sm-1 col-md-6 order-md-1 col-lg-5 order-lg-1">
+    <form [formGroup]="profileForm">
+      <div class="form-group">
+        <label for="nameinput">Name</label>
+        <div class="input-group" id="nameinput">
+          <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+          <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea class="form-control" id="bio" rows="5" formControlName="bio"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" id="location" placeholder="My city" formControlName="city">
+      </div>
+    </form>
+  </div>
+
+  <!-- Right side -->
+  <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-6 order-md-2 col-lg-4 order-lg-2 offset-lg-1">
+    <h3>{{display_name}}</h3>
+    <img class="img-fluid rounded imageprofile" src="https://www.afoolsjourney.com/wp-content/uploads/sites/10/2011/07/Bugs-Life-Flik.jpg">
+    <h5>Image options</h5>
+    <div class="btn-group imageoptions">
+      <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+      <button type="button" class="btn btn-success"><i class="fas fa-upload"></i> Change</button>
+    </div>
+  </div>
+</div>

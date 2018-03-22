@@ -1,0 +1,11 @@
+.btn-group.imageoptions {
+  display: flex;
+}
+
+.imageoptions .btn {
+  flex: 1
+}
+
+.imageprofile {
+    margin-bottom: 25px;
+}

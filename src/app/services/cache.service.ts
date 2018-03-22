@@ -13,12 +13,13 @@ export class CacheService {
       if (user == null) {
         // If haven't cache, ask to server
         this.http.get(this.api.getUrl('user/me')).toPromise().then((data: any) => {
-          localStorage.setItem('user', JSON.stringify({
-            name: data.display_name,
+
+          this.updateUserCache({
+            display_name: data.display_name,
             email: data.email.address,
             avatar: data.avatar,
             user_id: data.user_id
-          }));
+          });
           res();
         });
       } else {
@@ -32,5 +33,14 @@ export class CacheService {
         throw new Error('Invalid json on localStorage');
       }
     });
+  }
+
+  updateUserCache (data) {
+    localStorage.setItem('user', JSON.stringify({
+        name: data.display_name,
+        email: data.email,
+        avatar: data.avatar,
+        user_id: data.user_id
+      }));
   }
 }

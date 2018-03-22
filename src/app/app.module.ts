@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routes } from './app.router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './services/auth.service';
 import { CacheService } from './services/cache.service';
@@ -31,6 +32,7 @@ import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 import { SettingsComponent } from './pages/settings/settings/settings.component';
 import { ProfileSettingsComponent } from './pages/settings/profile-settings/profile-settings.component';
 import { AccountSettingsComponent } from './pages/settings/account-settings/account-settings.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { AccountSettingsComponent } from './pages/settings/account-settings/acco
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
   ],
   providers: [
@@ -63,7 +67,8 @@ import { AccountSettingsComponent } from './pages/settings/account-settings/acco
     LoggedGuard,
     UnloggedGuard,
     CacheService,
-    ApiService
+    ApiService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
